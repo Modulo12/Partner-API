@@ -109,4 +109,19 @@ Para criar uma nova transação, é necessário informar
   "content-type": null
 }
 ```
+##### 3 - Acessar status da Transaction
+
+ > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}/status`
+ 
+Acessa o status atual da transação. A resposta traz o código do status assim como sua descrição
+
+**Response:** 200 (OK).
+
+**Response Body**:
+```json
+{
+  "statusCode": 1,
+  "statusDescription": "Pending"
+}
+```
 
