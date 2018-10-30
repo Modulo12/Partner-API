@@ -111,7 +111,7 @@ Para criar uma nova transação, é necessário informar
 ```
 ##### 4 - Acessar status da Transaction
 
- > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}/status`
+ > **GET**  - `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}/status`
  
 Acessa o status atual da transação. A resposta traz o código do status assim como sua descrição
 
@@ -127,8 +127,8 @@ Acessa o status atual da transação. A resposta traz o código do status assim 
 
 ##### 4 - Obter informações/boleto da Transaction
 
- > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}?print_bill=true
- `
+ > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}?print_bill=true`
+ 
  Esta operação retorna as informações referentes à transação solicitada, e caso a variável "print_bill" seja enviada como *request parameter* com o valor **true**, o retorno é um arquivo em PDF contendo o boleto referente à esta transação.
 
 **Response:** 200 (OK).
