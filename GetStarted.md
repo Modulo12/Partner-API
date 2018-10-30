@@ -1,12 +1,6 @@
 Primeiros passos
 ===================
 
-### Introdução
-----------
-
-Este tutorial tem como objetivo apresentar exemplos de como utilizar a API de parceiros do Banco Maré. 
-
-
 ### Como fazer uma requisição
 As informações da API são disponibilizadas por meio de *webservices* utilizando arquitetura [REST] ( Representational State Transfer). 
 
@@ -75,6 +69,41 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
 ```json
 {
   "location": "http://partner.modulo12.com.br/v1/partner/1/customer/2",
+  "date": "Tue, 30 Oct 2018 13:59:03 GMT",
+  "content-length": "0",
+  "content-type": null
+}
+```
+
+##### 3 - Criação de Transaction
+
+ > **POST**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction`
+ 
+Para criar uma nova transação, é necessário informar 
+
+**Request Body:**
+```json
+
+{
+  "type": 1,
+  "customer":2,
+  "tenantName": "João Silva",
+  "tenantDocument": "05113405660",
+  "tenantAddress": "Logradouro X Casa Y Bairro UF",
+  "dueDate": "2018-01-01",
+  "documentInstructions": "",
+  "billAccountValue": "00.0",
+  "info": {"info1":"test"}
+}
+
+```
+
+**Response:** 201 (Created). A informação sobre o registro criado é retornada por meio do header **Location**. Como pode ser observado abaixo, o recurso foi criado com sucesso e sua UUID é **3**.
+
+**Response Headers**:
+```json
+{
+  "location": "http://partner.modulo12.com.br/v1/partner/1/customer/2/transaction/3",
   "date": "Tue, 30 Oct 2018 13:59:03 GMT",
   "content-length": "0",
   "content-type": null
