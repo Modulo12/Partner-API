@@ -109,7 +109,7 @@ Para criar uma nova transação, é necessário informar
   "content-type": null
 }
 ```
-##### 3 - Acessar status da Transaction
+##### 4 - Acessar status da Transaction
 
  > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}/status`
  
@@ -124,4 +124,34 @@ Acessa o status atual da transação. A resposta traz o código do status assim 
   "statusDescription": "Pending"
 }
 ```
+
+##### 4 - Obter informações/boleto da Transaction
+
+ > **GET**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction/{transactionId}?print_bill=true
+ `
+ Esta operação retorna as informações referentes à transação solicitada, e caso a variável "print_bill" seja enviada como *request parameter* com o valor **true**, o retorno é um arquivo em PDF contendo o boleto referente à esta transação.
+
+**Response:** 200 (OK).
+
+**Response Body (print_bill=false)**:
+```json
+{
+  "type": 1,
+  "customer":2,
+  "tenantName": "João Silva",
+  "tenantDocument": "05113405660",
+  "tenantAddress": "Logradouro X Casa Y Bairro UF",
+  "dueDate": "2018-01-01",
+  "documentInstructions": "",
+  "billAccountValue": "00.0",
+  "info": {"info1":"test"},
+  "statusCode": 2,
+  "statusDescription": "Waiting payment"
+  "invoice": "BASE64"
+}
+```
+
+**Response Body (print_bill=true)**:
+
+Arquivo PDF contendo o boleto.
 
