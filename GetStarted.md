@@ -146,7 +146,7 @@ Acessa o status atual da transação. A resposta traz o código do status assim 
   "billAccountValue": "00.0",
   "info": {"info1":"test"},
   "statusCode": 2,
-  "statusDescription": "Waiting payment"
+  "statusDescription": "Waiting payment",
   "invoice": "BASE64"
 }
 ```
