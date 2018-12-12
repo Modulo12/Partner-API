@@ -57,8 +57,7 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
   "info": {
     "info3": "teste3"
   },
-  "nome": "Cliente 1",
-  "partner": 1
+  "nome": "Cliente 1"
 }
 
 ```
