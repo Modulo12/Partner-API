@@ -16,17 +16,14 @@ Como exemplo, executaremos um fluxo simples que vai desde a criação do parceir
 ##### 1 - Cadastro de Partner
  > **POST**  -  `http://partner.modulo12.com.br/v1/partner/`
  
-Para cadastro das informações referentes ao parceiro, devem ser adicionados no corpo da requisição obrigatoriamente os atributos de email, nome e contato técnico. O campo opcional "info" é um atributo dinâmico que pode tomar forma de qualquer tipo de JSON necessário. No exemplo abaixo, são utilizados atributos de teste apenas para visualização.
+Para cadastro das informações referentes ao parceiro, devem ser adicionados no corpo da requisição obrigatoriamente os atributos de email, nome e contato técnico. O campo opcional "info" é um atributo dinâmico que pode tomar forma de qualquer tipo de JSON necessário. No exemplo abaixo, são utilizados atributos de teste apenas para visualização. Esse campo JSON dinâmico deve ser passado como uma String de JSON escapado ([escaped JSON](https://www.baeldung.com/java-json-escaping)) utilizando o caracter '\' antes das aspas duplas internas. 
 
 **Request Body:**
 ```json
  {
   "contatoTecnico": "(61) 3107-4189",
   "email": "contato@modulo12.com.br",
-  "info": {
-    "info1": "teste1",
-    "info2": "teste2"
-  },
+  "info": "{\"info1\": \"teste1\",\"info2\": \"teste2\"}",
   "nome": "Módulo12"
 }
 ```
@@ -47,16 +44,14 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
 
  > **POST**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer`
  
- Tendo o parceiro seu cadastro completado na plataforma, ele então pode cadastrar seus clientes informando CPF, nome e a UUID do parceiro relacionado (neste caso, a que criamos no último passo). Novamente o campo JSON dinâmico "info" pode ser utilizado da forma que o parceiro desejar, inserindo as informações que forem necessárias para seu cliente.
+ Tendo o parceiro seu cadastro completado na plataforma, ele então pode cadastrar seus clientes informando CPF, nome e a UUID do parceiro relacionado (neste caso, a que criamos no último passo). Novamente o campo JSON dinâmico "info" pode ser utilizado da forma que o parceiro desejar, inserindo as informações que forem necessárias para seu cliente. Esse campo JSON dinâmico deve ser passado como uma String de JSON escapado ([escaped JSON](https://www.baeldung.com/java-json-escaping)) utilizando o caracter '\' antes das aspas duplas internas. 
 
 **Request Body:**
 ```json
 
 {
   "cpf": "04520320301",
-  "info": {
-    "info3": "teste3"
-  },
+  "info": "{\"info1\": \"teste1\"}",
   "nome": "Cliente 1"
 }
 
@@ -92,7 +87,7 @@ Para criar uma nova transação, é necessário informar
   "dueDate": "2018-01-01",
   "documentInstructions": "",
   "billAccountValue": "00.0",
-  "info": {"info1":"test"}
+  "info": "{\"info1\":\"test\"}"
 }
 
 ```
