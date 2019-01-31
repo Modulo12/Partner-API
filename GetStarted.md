@@ -21,14 +21,14 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
 **Request Body:**
 ```json
  {
-  "contatoTecnico": "(61) 3107-4189",
+  "contact": "(61) 3107-4189",
   "email": "contato@modulo12.com.br",
   "info": "{\"info1\": \"teste1\",\"info2\": \"teste2\"}",
-  "nome": "Módulo12"
+  "name": "Módulo12"
 }
 ```
 
-**Response:** 201 (Created). A informação sobre o registro criado é retornada por meio do header **Location**. Como pode ser observado abaixo, o recurso foi criado com sucesso e sua UUID é **1**.
+**Response:** 201 (Created). A informação sobre o registro criado é retornada por meio do header **Location**. Como pode ser observado no exemplo abaixo, o recurso foi criado com sucesso e sua UUID é **1**.
 
 **Response Headers**:
 ```json
@@ -52,12 +52,12 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
 {
   "cpf": "04520320301",
   "info": "{\"info1\": \"teste1\"}",
-  "nome": "Cliente 1"
+  "name": "Cliente 1"
 }
 
 ```
 
-**Response:** 201 (Created). A informação sobre o registro criado é retornada por meio do header **Location**. Como pode ser observado abaixo, o recurso foi criado com sucesso e sua UUID é **2**.
+**Response:** 201 (Created). A informação sobre o registro criado é retornada por meio do header **Location**. Como pode ser observado no exemplo abaixo, o recurso foi criado com sucesso e sua UUID é **2**.
 
 **Response Headers**:
 ```json
@@ -73,21 +73,28 @@ Para cadastro das informações referentes ao parceiro, devem ser adicionados no
 
  > **POST**  -  `http://partner.modulo12.com.br/v1/partner/{partnerId}/customer/{customerId}/transaction`
  
-Para criar uma nova transação, é necessário informar 
+Para criar uma nova transação, é necessário informar via Request Body, obrigatoriamente, os seguintes campos:
 
 **Request Body:**
 ```json
 
 {
-  "type": 1,
-  "customer":2,
-  "tenantName": "João Silva",
-  "tenantDocument": "05113405660",
-  "tenantAddress": "Logradouro X Casa Y Bairro UF",
-  "dueDate": "2018-01-01",
-  "documentInstructions": "",
-  "billAccountValue": "00.0",
-  "info": "{\"info1\":\"test\"}"
+   "dueDate": "2018-05-21",
+  "tenantAddress": {
+    "bairro": "string",
+    "cep": "string",
+    "cidade": "string",
+    "logradouro": "string",
+    "uf": "string"
+  },
+  "tenantBirthDate": "1980-01-10",
+  "tenantCellPhone": "61-900000000",
+  "tenantCpf": "string",
+  "tenantEmail": "test@email.com",
+  "tenantFirstName": "string",
+  "tenantLastName": "string",
+  "type": 0,
+  "value": 0
 }
 
 ```
@@ -129,19 +136,30 @@ Acessa o status atual da transação. A resposta traz o código do status assim 
 
 **Response Body (print_bill=false)**:
 ```json
+
 {
-  "type": 1,
-  "customer":2,
-  "tenantName": "João Silva",
-  "tenantDocument": "05113405660",
-  "tenantAddress": "Logradouro X Casa Y Bairro UF",
-  "dueDate": "2018-01-01",
-  "documentInstructions": "",
-  "billAccountValue": "00.0",
-  "info": {"info1":"test"},
+  "id": 8,
+  "tenantFirstName": null,
+  "tenantLastName": null,
+  "tenantBirthDate": null,
+  "tenantEmail": null,
+  "tenantCellPhone": null,
+  "tenantCpf": "02125532085",
   "statusCode": 2,
-  "statusDescription": "Waiting payment",
-  "invoice": "BASE64"
+  "statusDescription": "Entrada Confirmada",
+  "type": 0,
+  "value": 15,
+  "timestamp": "2019-01-29T19:33:08.000+0000",
+  "dueDate": "2019-01-29",
+  "customer": 91,
+  "tenantAddress": {
+    "logradouro": "CLN 114",
+    "bairro": "Asa Norte",
+    "cep": "70764540",
+    "cidade": "Brasilia",
+    "uf": "DF"
+  },
+  "info": null
 }
 ```
 
